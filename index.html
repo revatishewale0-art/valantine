@@ -1,0 +1,86 @@
+!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #ffdae0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1 { color: #d63384; font-size: 2.5rem; margin-bottom: 20px; }
+
+        .container { position: relative; width: 100%; max-width: 500px; height: 300px; }
+
+        button {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: absolute;
+            transition: 0.1s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        #yesBtn { background-color: #ff4d6d; color: white; left: 20%; top: 20%; }
+
+        #noBtn { background-color: #888; color: white; left: 60%; top: 20%; z-index: 999; }
+
+        .cat-img { width: 280px; border-radius: 15px; display: none; margin-top: 20px; }
+
+        #celebration { display: none; animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+        @keyframes pop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+    <div id="question-box">
+        <h1>Will you be my Valentine? ❤️</h1>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYxc3RycGZ6eXN1ZGVueWN6NTRoZnB1Z3B1amZ4eXF6eXF6eXF6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbxxvDUQM/giphy.gif" width="150">
+        <div class="container">
+            <button id="yesBtn" onclick="beMine()">YES!</button>
+            <button id="noBtn" onmouseover="runAway()" onclick="runAway()">NO</button>
+        </div>
+    </div>
+
+    <div id="celebration">
+        <h1>YAAAAY! HAPPY HAPPY HAPPY! 🐱✨</h1>
+        <img class="cat-img" src="https://media.tenor.com/On7beu1yGc4AAAAM/cat-cute.gif" style="display:inline;">
+        <p style="font-size: 1.2rem; color: #d63384;">(Best choice ever! See you on the 14th! ❤️)</p>
+    </div>
+
+    <script>
+        function runAway() {
+            const noBtn = document.getElementById('noBtn');
+            // Calculates random position within the screen
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        function beMine() {
+            document.getElementById('question-box').style.display = 'none';
+            document.getElementById('celebration').style.display = 'block';
+            confettiEffect();
+        }
+
+        // Optional: Simple visual alert if he somehow manages to click "Yes"
+        function confettiEffect() {
+            document.body.style.backgroundColor = "#ffb3c1";
+        }
+    </script>
+
+</body>
+</html>
